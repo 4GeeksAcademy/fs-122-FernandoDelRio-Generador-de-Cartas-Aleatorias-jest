@@ -1,0 +1,70 @@
+
+body {
+  background: green;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Georgia", serif;
+}
+
+
+.card {
+  width: 260px;
+  height: 360px;
+  background: white;
+  border-radius: 25px;
+  position: relative;
+  padding: 20px;
+  box-shadow: 0 15px 40px black;
+  border: 3px solid #ebeaea;
+}
+
+
+.top-suit {
+  font-size: 60px;
+}
+
+
+.value {
+  font-size: 110px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.bottom-suit {
+  font-size: 60px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  transform: rotate(180deg);
+}
+
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  background: white;
+}
+
+button:hover {
+  background: white;
+}
+
+
+.red {
+  color: red;
+}
+
+.black {
+  color: black;
+}
