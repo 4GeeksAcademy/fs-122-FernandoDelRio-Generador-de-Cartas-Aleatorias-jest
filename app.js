@@ -12,15 +12,21 @@ const CARD_VALUES = ["A", "2", "3", "4", "5", "6", "7",
 
 
 
+
+
 const createRandomCard = () => {
   const suit = getRandomItem(CARD_SUITS);
   const value = getRandomItem(CARD_VALUES);
-  const isRedSuit = suit === "♥" || suit === "♦";
+
+  const redSuits = ["♥", "♦"];
+  const isRedSuit = redSuits.includes(suit);
+
+  const colorClass = isRedSuit ? "red" : "black";
 
   return {
-    suit,
-    value,
-    colorClass: isRedSuit ? "red" : "black"
+    suit: suit,
+    value: value,
+    colorClass: colorClass
   };
 };
 
@@ -32,24 +38,34 @@ const getCardElements = () => ({
   value: document.getElementById("value")
 });
 
-const applyCardToDOM = (card) => {
-  const { topSuit, bottomSuit, value } = getCardElements();
 
-  if (!topSuit || !bottomSuit || !value) return;
+
+const applyCardToDOM = (card) => {
+  const elements = getCardElements();
+  const { topSuit, bottomSuit, value } = elements;
+
+  const elementsExist = topSuit && bottomSuit && value;
+  if (!elementsExist) return;
 
   topSuit.textContent = card.suit;
   bottomSuit.textContent = card.suit;
   value.textContent = card.value;
 
-  topSuit.className = `top-suit ${card.colorClass}`;
-  bottomSuit.className = `bottom-suit ${card.colorClass}`;
-  value.className = `value ${card.colorClass}`;
+  const color = card.colorClass;
+
+  topSuit.className = `top-suit ${color}`;
+  bottomSuit.className = `bottom-suit ${color}`;
+  value.className = `value ${color}`;
 };
+
+
 
 const showNewCard = () => {
   const randomCard = createRandomCard();
   applyCardToDOM(randomCard);
 };
+
+
 
 
 
